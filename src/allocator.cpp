@@ -3,7 +3,7 @@
 #include <new>
 
 namespace alloy::alloc {
-[[nodiscard]] void* general_purpose_allocator::allocate(size_t size, size_t alignment) noexcept {
+[[nodiscard]] auto general_purpose_allocator::allocate(size_t size, size_t alignment) noexcept -> void* {
     if (size == 0) {
         return nullptr;
     }
@@ -15,7 +15,7 @@ void general_purpose_allocator::deallocate(void* ptr, size_t /*size*/, size_t al
     ::operator delete(ptr, std::align_val_t{alignment}, std::nothrow);
 }
 
-[[nodiscard]] bool general_purpose_allocator::is_equal(const allocator_backend& other) const noexcept {
+[[nodiscard]] auto general_purpose_allocator::is_equal(const allocator_backend& other) const noexcept -> bool {
     return dynamic_cast<const general_purpose_allocator*>(&other) != nullptr;
 }
 
