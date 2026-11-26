@@ -9,7 +9,7 @@ option(ALLOY_ALLOC_BUILD_DOCS "Build API documentation target" OFF)
 add_library(alloy_alloc_compile_options INTERFACE)
 
 target_compile_features(
-    alloy_alloc_compile_options INTERFACE cxx_std_20
+    alloy_alloc_compile_options INTERFACE cxx_std_23
 )
 
 if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
@@ -24,14 +24,20 @@ elseif(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "GNU")
     )
 endif()
 
-add_library(alloy_alloc STATIC src/arena.cpp)
+include(cmake/AlloyDependencies.cmake)
+include(cmake/AlloyDependencyPins.cmake)
+
+alloy_declare_dependency(alloy_core)
+FetchContent_MakeAvailable(alloy_core)
+
+add_library(alloy_alloc STATIC src/arena.cpp src/allocator.cpp)
 add_library(alloy::alloc ALIAS alloy_alloc)
-target_compile_features(alloy_alloc PUBLIC cxx_std_20)
+target_compile_features(alloy_alloc PUBLIC cxx_std_23)
 set_target_properties(alloy_alloc PROPERTIES CXX_EXTENSIONS OFF CXX_SCAN_FOR_MODULES OFF)
 target_include_directories(alloy_alloc PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 )
-target_link_libraries(alloy_alloc PRIVATE alloy_alloc_compile_options)
+target_link_libraries(alloy_alloc PUBLIC alloy::core PRIVATE alloy_alloc_compile_options)
 
 if(ALLOY_ALLOC_BUILD_TESTS)
     enable_testing()

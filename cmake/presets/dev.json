@@ -14,43 +14,64 @@
             "name": "dev",
             "inherits": [
                 "base"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-linux-clang",
             "inherits": [
                 "linux-clang"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-linux-clang-san",
             "inherits": [
                 "linux-clang-san"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-linux-gcc",
             "inherits": [
                 "linux-gcc"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-linux-gcc-san",
             "inherits": [
                 "linux-gcc-san"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-windows-clang",
             "inherits": [
                 "windows-clang"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         },
         {
             "name": "dev-windows-msvc",
             "inherits": [
                 "windows-msvc"
-            ]
+            ],
+            "cacheVariables": {
+                "FETCHCONTENT_SOURCE_DIR_ALLOY_CORE": "${sourceDir}/../alloy_core"
+            }
         }
     ],
     "buildPresets": [

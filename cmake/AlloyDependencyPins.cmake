@@ -1,0 +1,2 @@
+set(ALLOY_CORE_GIT_REPOSITORY "https://github.com/QuasiData/alloy_core.git" CACHE STRING "Git URL for alloy_core")
+set(ALLOY_CORE_GIT_TAG "main" CACHE STRING "Git revision for alloy_core")
